@@ -1,3 +1,4 @@
+# Follow the tutorial link https://youtu.be/4oUs4IV_Mj4 
 image: barichello/godot-ci:3.4.2
 
 variables:
