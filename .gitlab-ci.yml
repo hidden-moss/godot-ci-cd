@@ -16,3 +16,33 @@ windows:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/windows
+
+linux:
+  stage: export
+  script:
+    - mkdir -v -p build/linux
+    - godot -v --export "Linux/X11" ./build/linux/$EXPORT_NAME.x86_64
+  artifacts:
+    name: $EXPORT_NAME-$CI_JOB_NAME
+    paths:
+      - build/linux
+
+macosx:
+  stage: export
+  script:
+    - mkdir -v -p build/macosx
+    - godot -v --export "macosx/X11" ./build/macosx/$EXPORT_NAME.zip
+  artifacts:
+    name: $EXPORT_NAME-$CI_JOB_NAME
+    paths:
+      - build/macosx
+
+web:
+  stage: export
+  script:
+    - mkdir -v -p build/web
+    - godot -v --export "web/X11" ./build/web/index.html
+  artifacts:
+    name: $EXPORT_NAME-$CI_JOB_NAME
+    paths:
+      - build/web
