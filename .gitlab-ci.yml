@@ -58,4 +58,4 @@ pages:
     paths:
       - public
   only:
-    - develop
+    - main
