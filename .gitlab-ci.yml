@@ -2,6 +2,7 @@ image: barichello/godot-ci:3.2.2
 
 variables:
   EXPORT_NAME: Godot-Test
+  ITCHIO_NAME: endaye/godot-test
 
 stages:
   - export
@@ -57,5 +58,20 @@ pages:
   artifacts:
     paths:
       - public
+  only:
+    - develop
+
+itch:
+  stage: deploy
+  dependencies:
+    - web
+    - linux
+    - macosx
+    - windows
+  script:
+    - butler push build/web $ITCHIO_NAME:web-stable
+    - butler push build/linux $ITCHIO_NAME:linux-stable
+    - butler push build/macosx $ITCHIO_NAME:macosx-stable
+    - butler push build/windows $ITCHIO_NAME:windows-stable
   only:
     - main
